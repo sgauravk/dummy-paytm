@@ -1,28 +1,27 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+const express = require("express");
+const bodyParser = require("body-parser");
+const fs = require("fs");
+const users = require("./usersData.json");
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+const app = new express();
+
+const addNewUser = function(req, res) {
+  const name = req.body;
+  const data = {username: name, money: 0}
+  !users.some(user => user.username == name) && users.push(data);
+  const money = users.find(user=> user.username == name).money;
+  fs.writeFileSync("./src/usersData.json", JSON.stringify(users));
+  res.send(JSON.stringify(users.some(user => user.username == name)));
+  res.end();
+};
+
+const updateWallet = function(req, res){
+  const {totalBalance, username} = JSON.parse(req.body);
+  users.find(user => user.username == username).money = totalBalance;
+  res.end();
 }
 
-export default App;
+app.use(bodyParser.text());
+app.post("/addUser", addNewUser);
+app.post("/addMoney", updateWallet);
+app.listen(3050, () => "listening on 3050");

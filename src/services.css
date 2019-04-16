@@ -1,0 +1,27 @@
+html,body{
+  height: 100%;
+  width: 99.5%;
+  font-weight: 100;
+}
+
+ul{
+  width: 100%;
+  font-family: avenir;
+  font-size: 20px;
+  height: 180px;
+  display: flex;
+  justify-content: space-evenly;
+  background: #003370;
+  align-items: center;
+  color: #eaecf3;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+li{
+  width: 8%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
