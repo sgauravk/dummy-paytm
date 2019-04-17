@@ -49,6 +49,9 @@ const updateWallet = function(req, res) {
 };
 const port = process.env.PORT || 8080;
 app.use(bodyParser.text());
+
+app.use(express.static('reactApp/build'));
+
 app.get('*',(req,res)=>{
   res.sendFile(__dirname + '/reactApp/build/index.html')
 })
