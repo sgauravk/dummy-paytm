@@ -15,7 +15,9 @@ class Header extends Component {
   hideLogin() {
     const name = document.getElementById('login-box').value;
     if(!name) return;
-    fetch("/addUser", {method:"POST", body: name}).then(res => console.log(res));
+    fetch("/addUser", {method:"POST", body: name}).then(res => res.text()).then(money=>{
+      document.getElementById("current-balance").innerText = money;
+    });
     document.getElementById("username").innerText = name;
     document.getElementById("username").style.fontSize = "25px";
     document.getElementById("username").style.fontWeight = "800";

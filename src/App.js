@@ -11,8 +11,7 @@ const addNewUser = function(req, res) {
   !users.some(user => user.username == name) && users.push(data);
   const money = users.find(user=> user.username == name).money;
   fs.writeFileSync("./src/usersData.json", JSON.stringify(users));
-  res.send(JSON.stringify(users.some(user => user.username == name)));
-  res.end();
+  res.send(JSON.stringify(money));
 };
 
 const updateWallet = function(req, res){
