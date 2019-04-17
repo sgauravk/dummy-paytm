@@ -1,13 +1,11 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const fs = require("fs");
-const users = require("./usersData.json");
 const mysql = require("mysql");
 const connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "test",
-  database: "users_db"
+  host: process.env.HOST,
+  user: process.env.USER,
+  password: process.env.PWD,
+  database: process.env.DB
 });
 
 connection.connect();

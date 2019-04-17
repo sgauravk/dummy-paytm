@@ -31,7 +31,7 @@ class Header extends Component {
   hideAddMoney() {
     const ammount = +document.getElementById('add-money-box').value;
     const username = document.getElementById('login-box').value;
-    if(!ammount) return;
+    if(!ammount || ammount < 0) return;
     if(!username){
       document.getElementById("add-money").style.visibility = "hidden";
       return alert("login to add money");
