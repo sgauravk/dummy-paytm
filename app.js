@@ -8,9 +8,7 @@ const connection = mysql.createConnection({
   database: process.env.DB
 });
 
-console.log('came till eher');
-connection.connect();
-console.log('connection done');
+// connection.connect();
 
 const app = new express();
 
