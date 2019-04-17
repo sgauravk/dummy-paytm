@@ -47,8 +47,8 @@ const updateWallet = function(req, res) {
     }
   );
 };
-
+const port = process.env.PORT || 8080;
 app.use(bodyParser.text());
 app.post("/addUser", addNewUser);
 app.post("/addMoney", updateWallet);
-app.listen(3050, () => "listening on 3050");
+app.listen(port, () => "listening on " + port);
