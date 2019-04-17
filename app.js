@@ -49,6 +49,9 @@ const updateWallet = function(req, res) {
 };
 const port = process.env.PORT || 8080;
 app.use(bodyParser.text());
+app.get('*',(req,res)=>{
+  res.sendFile(__dirname + '/reactApp/build/index.html')
+})
 app.post("/addUser", addNewUser);
 app.post("/addMoney", updateWallet);
 app.listen(port, () => "listening on " + port);
